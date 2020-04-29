@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:contentPadding="@dimen/dimen_8dp"
+    android:layout_gravity="start"
+    app:cardCornerRadius="@dimen/dimen_8dp"
+    app:cardBackgroundColor="@color/colorWhite"
+    android:layout_margin="@dimen/dimen_8dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_16sp"
+            android:layout_marginBottom="@dimen/dimen_8dp"
+            android:text="@string/sample_content_message"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_date_message"
+            android:textSize="@dimen/text_size_10sp"
+            android:layout_gravity="start"
+            android:textColor="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
