@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/text_size_16sp"
-            android:layout_gravity="end"
             android:layout_marginBottom="@dimen/dimen_8dp"
             android:text="@string/sample_content_message"/>
 
