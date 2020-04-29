@@ -1,0 +1,3 @@
+[submodule "coreapp"]
+	path = coreapp
+	url = git@github.com:liandaraaa/coreapp.git
