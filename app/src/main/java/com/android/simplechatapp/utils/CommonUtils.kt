@@ -8,3 +8,11 @@ fun Timestamp.toReadableDate(format: String, locale: Locale = Locale.getDefault(
     val formatter = SimpleDateFormat(format, locale)
     return formatter.format(Date(this.seconds*1000))
 }
+
+fun Date.toFirestoreTimestamp():Timestamp{
+    return Timestamp(this)
+}
+
+fun getCurrentFirestoreTimestamp():Timestamp{
+    return Calendar.getInstance().time.toFirestoreTimestamp()
+}

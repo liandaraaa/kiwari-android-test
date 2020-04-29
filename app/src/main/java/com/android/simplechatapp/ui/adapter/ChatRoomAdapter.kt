@@ -17,7 +17,10 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.item_chat_room.view.*
 import kotlinx.android.synthetic.main.item_owner_chat.view.*
 
-class ChatRoomAdapter (val context: Context, val datas:MutableList<ChatRoom>, var currentUserId:String = "")
+class ChatRoomAdapter (val context: Context,
+                       val datas:MutableList<ChatRoom>,
+                       var currentUserId:String = "",
+                       val listener:OnChatRoomClickListener? = null)
     :RecyclerView.Adapter<ChatRoomAdapter.ChatViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
@@ -37,6 +40,7 @@ class ChatRoomAdapter (val context: Context, val datas:MutableList<ChatRoom>, va
             with(itemView){
 
                 val senderId = if(data.ownerOneId == currentUserId) data.ownerTwoId else  data.ownerOneId
+                var sender = User()
 
                 val userDataSource = UserDataSource()
 
@@ -65,12 +69,21 @@ class ChatRoomAdapter (val context: Context, val datas:MutableList<ChatRoom>, va
                     }
 
                     override fun onGetDocumentSuccess(document: User) {
+                        sender = document
                         Glide.with(context).load(document.avatar).into(imgAvatar)
                         tvName.text = document.name
                     }
 
                 }
+
+                setOnClickListener {
+                    listener?.onChatRoomClicked(data.id, sender)
+                }
             }
         }
+    }
+
+    interface OnChatRoomClickListener{
+        fun onChatRoomClicked(id:String, sender:User)
     }
 }

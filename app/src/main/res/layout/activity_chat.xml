@@ -13,33 +13,44 @@
         android:id="@+id/rvChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/sendChatContainer"
         android:layout_below="@+id/toolbar"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        android:padding="@dimen/dimen_8dp"
+        tools:listitem="@layout/item_opponent_chat" />
 
     <LinearLayout
+        android:id="@+id/sendChatContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_whitetwo_otlined"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:padding="@dimen/dimen_16dp"
-        android:layout_alignParentBottom="true">
+        android:padding="@dimen/dimen_8dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtChat"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:hint="@string/hint_type_a_message_here"/>
+            android:layout_weight="1"
+            android:hint="@string/hint_type_a_message_here"
+            android:inputType="textMultiLine" />
 
         <ImageView
             android:id="@+id/btnSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_send"
-            android:padding="@dimen/dimen_8dp"/>
-
+            android:padding="@dimen/dimen_8dp"
+            android:src="@drawable/ic_send" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

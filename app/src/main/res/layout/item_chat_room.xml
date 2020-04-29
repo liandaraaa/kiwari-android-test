@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     app:cardBackgroundColor="@color/colorPrimary"
     app:contentPadding="@dimen/dimen_16dp"
@@ -25,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/dimen_8dp"
-            android:text="@string/sample_name"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            tools:text="@string/sample_name"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 

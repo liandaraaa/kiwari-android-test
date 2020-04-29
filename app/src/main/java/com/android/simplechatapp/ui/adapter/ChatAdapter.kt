@@ -10,15 +10,10 @@ import com.android.simplechatapp.domain.model.Chat
 import com.android.simplechatapp.utils.toReadableDate
 import kotlinx.android.synthetic.main.item_owner_chat.view.*
 
-class ChatAdapter (val context: Context, val datas:MutableList<Chat>)
+class ChatAdapter (val context: Context,
+                   val datas:MutableList<Chat>,
+                   var currentUserId:String = "")
     :RecyclerView.Adapter<ChatAdapter.ChatViewHolder>(){
-
-    val type = OWNER_CHAT
-
-    companion object{
-        const val OWNER_CHAT = 23
-        const val OPPONENT_CHAT = 34
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         return ChatViewHolder(LayoutInflater.from(context).inflate(viewType, parent, false))
@@ -29,10 +24,10 @@ class ChatAdapter (val context: Context, val datas:MutableList<Chat>)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(type){
-            OWNER_CHAT -> R.layout.item_owner_chat
-            OPPONENT_CHAT -> R.layout.item_opponent_chat
-            else -> R.layout.item_owner_chat
+        return if (datas[position].senderId == currentUserId ){
+            R.layout.item_owner_chat
+        }else{
+            R.layout.item_opponent_chat
         }
     }
 
@@ -47,5 +42,24 @@ class ChatAdapter (val context: Context, val datas:MutableList<Chat>)
                 tvDate.text =data.date.toReadableDate("dd MMMM yyyy (hh:mm)")
             }
         }
+    }
+
+    fun add(item: Chat) {
+        datas.add(item)
+        notifyItemInserted(datas.size - 1)
+    }
+
+    fun addOrUpdate(items: List<Chat>) {
+        val size = items.size
+        for (i in 0 until size) {
+            val item = items[i]
+            val x = datas.indexOf(item)
+            if (x >= 0) {
+                datas.set(x, item)
+            } else {
+                add(item)
+            }
+        }
+        notifyDataSetChanged()
     }
 }

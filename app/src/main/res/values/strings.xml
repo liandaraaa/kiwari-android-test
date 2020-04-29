@@ -8,4 +8,6 @@
     <string name="sample_name">Ismail Bin Mail</string>
     <string name="hint_type_a_message_here">Type a message here</string>
     <string name="message_empty_chat_room">Empty Chat Room</string>
+    <string name="message_empty_collection">Empty collection</string>
+    <string name="action_logout">logout</string>
 </resources>

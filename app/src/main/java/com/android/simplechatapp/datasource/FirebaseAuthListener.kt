@@ -1,6 +1,6 @@
 package com.android.simplechatapp.datasource
 
 interface OnFirebaseAuthListener {
-    fun onLoginSuccess()
+    fun onLoginSuccess(userId:String)
     fun onLoginFailed(message:String)
 }

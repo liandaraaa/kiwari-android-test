@@ -11,7 +11,8 @@ class FirebaseAuthDataSource(val listener: OnFirebaseAuthListener?= null){
     fun signIn(email:String, password:String){
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                listener?.onLoginSuccess()
+                val userId = it.user?.uid.orEmpty()
+                listener?.onLoginSuccess(userId)
             }
             .addOnFailureListener {
                 listener?.onLoginFailed(it.message.toString())
